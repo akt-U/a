@@ -1,7 +1,5 @@
 package com.techacademy.entity;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -12,7 +10,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
 
 import lombok.Data;
@@ -35,23 +34,20 @@ public class Authentication {
     /** パスワード */
     @Column(length = 255, nullable = false)
     @NotEmpty
+    @Length(min=12)
     @Length(max=255)
     private String password;
 
     /** 列挙型（文字列） */
-    @Column(length = 10)
+    @Column(name = "role",length = 10, nullable = false)
     @Enumerated(EnumType.STRING)
     @NotNull
-    @Length(max=10)
     private Role role;
 
-    /** 有効日付 */
 
     /** 従業員ID */
     @OneToOne
     @JoinColumn(name="employee_id", referencedColumnName="id")
-    @NotEmpty
-    @NotNull
     private Employee employee;
 
 }
