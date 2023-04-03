@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title>DailyReportSystem</title>
+    <link rel="stylesheet" th:href="@{/css/user/update.css}">
 </head>
 <body>
     <h1>employee情報管理システム</h1>
     <h2>employee更新</h2>
     <form method="post" th:action="@{/employee/update/{id}/(id=${employee.id})}" th:object="${employee}">
+
         <label>社員番号</label>
         <input type="text" th:field="*{authentication.code}" th:errorclass="err">
         <span th:errors="*{authentication.code}" class="err"></span>

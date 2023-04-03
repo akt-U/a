@@ -55,9 +55,6 @@ public class EmployeeService {
             return employeeRepository.save(employee);
         }
 
-        public Employee findById(Integer id) {
-            return employeeRepository.findById(id).get();
-        }
 
         // ----- 追加:ここから -----
         /** 従業員の削除を行う */

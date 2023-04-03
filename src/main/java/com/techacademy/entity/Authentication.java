@@ -24,7 +24,7 @@ public class Authentication {
     public static enum Role {
         管理者, 一般
     }
-    /** ユーザ名 */
+    /** 社員番号 */
     @Id
     @Column(length = 20, nullable = false)
     @NotEmpty
