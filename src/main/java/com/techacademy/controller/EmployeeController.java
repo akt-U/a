@@ -81,7 +81,7 @@ public class EmployeeController {
     @PostMapping("/update/{id}")
     public String postEmployee(@Validated Employee employee, BindingResult res, Model model) {
         if(res.hasErrors()) {
-            return getEmployee(null, model);
+            return "employee/update";
         }
 
         service.updateEmployee(employee);

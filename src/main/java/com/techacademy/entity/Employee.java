@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne; // 追加
 import javax.persistence.PreRemove; // 追加
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -38,7 +39,7 @@ public class Employee {
     /** 名前。20桁。null不許可 */
     @Column(length = 20, nullable = false)
     @NotEmpty
-    @Length(max=20)
+    @Length(max=20,message="20文字以内で入力してください")
     private String name;
 
     @Column(name = "delete_flag", nullable = false)
@@ -53,6 +54,7 @@ public class Employee {
     private Date updatedAt;
 
     @OneToOne(mappedBy = "employee", cascade = CascadeType.ALL)
+    @Valid
     private Authentication authentication;
 
     @PreRemove
@@ -63,6 +65,8 @@ public class Employee {
             authentication.setEmployee(null);
 }
     }
-}
+
+    }
+
 
 

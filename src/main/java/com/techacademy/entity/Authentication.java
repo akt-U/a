@@ -10,8 +10,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.Length;
 
 import lombok.Data;
@@ -26,22 +24,19 @@ public class Authentication {
     }
     /** 社員番号 */
     @Id
-    @Column(length = 20, nullable = false)
     @NotEmpty
-    @Length(max=20)
+    @Column(length = 20, nullable = false)
+    @Length(max=20,message="20文字以内で入力してください")
     private String code;
 
     /** パスワード */
     @Column(length = 255, nullable = false)
-    @NotEmpty
-    @Length(min=12)
-    @Length(max=255)
+    @Length(min=12,max=255,message="パスワードは12文字以上255文字以内で入力してください")
     private String password;
 
     /** 列挙型（文字列） */
     @Column(name = "role",length = 10, nullable = false)
     @Enumerated(EnumType.STRING)
-    @NotNull
     private Role role;
 
 

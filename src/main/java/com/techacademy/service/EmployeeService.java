@@ -34,6 +34,9 @@ public class EmployeeService {
             employee.setDeleteFlag(0);
             employee.setCreatedAt(new Date(new java.util.Date().getTime()));
             employee.setUpdatedAt(new Date(new java.util.Date().getTime()));
+
+
+
             Authentication authentication = employee.getAuthentication();
 
             authentication.setEmployee(employee);
@@ -48,12 +51,14 @@ public class EmployeeService {
             Employee currentEmployee = getEmployee(employee.getId());
             employee.setCreatedAt(currentEmployee.getCreatedAt());
             employee.setUpdatedAt(new Date(new java.util.Date().getTime()));
+
             Authentication authentication = employee.getAuthentication();
 
             authentication.setEmployee(employee);
 
             return employeeRepository.save(employee);
         }
+
 
 
         // ----- 追加:ここから -----
